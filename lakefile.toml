@@ -1,0 +1,6 @@
+name = "GeometricNullOntologicalSpectralInvariantSymmetry"
+version = "1.0.0"
+defaultTargets = ["GnosisDomainFiltration"]
+
+[[lean_lib]]
+name = "GnosisDomainFiltration"
