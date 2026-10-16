@@ -26,9 +26,11 @@ jobs:
       - name: Checkout GeometricNullOntologicalSpectralInvariantSymmetry
         uses: actions/checkout@v4
 
-      - name: Install Lean 4.28.0 and Verify GNOSIS Modules
+      - name: Install Lean 4.28.0, Verify All 4 GNOSIS Modules, and Run Empirical Audit
         run: |
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
           export PATH="$HOME/.elan/bin:$PATH"
           lean --version
+          echo "Building and kernel-verifying all 4 modules of GNOSIS..."
           lake build
+          lake env lean --run GnosisEmpiricalAndInformationAudit.lean
