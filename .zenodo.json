@@ -1,0 +1,36 @@
+{
+  "title": "Geometric Null Ontological Spectral Invariant Symmetry: Constructive Emergence and Spectral Rigidity of the Rank-2 Euclidean Jordan Spin Factor V_5 and Conformal Representation W_8 in Lean 4",
+  "version": "1.0.0",
+  "publication_date": "2026-10-16",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Rivera, Anthony Curtis"
+    }
+  ],
+  "description": "<p><strong>Geometric Null Ontological Spectral Invariant Symmetry</strong> is a self-contained, machine-verified mathematical formalization in <strong>Lean 4</strong> (<code>v4.28.0</code>) establishing the constructive emergence and spectral rigidity of the rank-2 Euclidean Jordan spin factor <em>V</em><sub>5</sub> = ℚ<em>e</em> ⊕ ℚ<sup>5</sup>, the Cartan Type IV bounded symmetric domain <em>D</em><sub>5</sub>, and the 8-dimensional Tits–Kantor–Koecher (TKK) conformal representation <em>W</em><sub>8</sub> = ℚ ⊕ <em>V</em><sub>5</sub> ⊕ ℚ.</p><p>Constructed as a strict proof-to-variable cascade with zero axioms, zero <code>sorry</code>s, zero external dependencies, and zero free parameters, the core mathematical deduction (<code>GnosisDomainFiltration.lean</code>, <code>GnosisOperatorSpectrum.lean</code>, and <code>GnosisConformalAndBundles.lean</code>) contains only a single numeric literal—the initial <code>0</code> inside <code>proof_NullCapacity</code>—and zero <code>Nat.zero</code> or <code>Nat.succ</code> constructors anywhere thereafter. Every structural rank, lattice coordinate, orthonormal basis vector, matrix cofactor, polynomial identity, representation signature, vector bundle dimension, and spectral invariant is declared exclusively as the <code>.survivor</code> output of a kernel-verified proof structure (<code>IntersectionIsolation</code>, <code>UniqueLawSolution</code>, or <code>VerifiedEmergence</code>).</p><p><strong>Convergent Mathematical Architecture (Modules 1–3):</strong></p><ul><li><strong>Module 1 (<code>GnosisDomainFiltration.lean</code>):</strong> Isolates algebraic zero (<code>NullCapacity = 0</code>) via unbounded capability intersection and additive idempotence; proves that the empty carrier <code>[]</code> fails existential null maintenance whereas the singleton equivalence class <code>[0]</code> maintains nullity with unit cardinality (<code>1</code>); isolates signature rank <em>p</em>* = 1, Jordan rank <em>r</em><sub>1</sub> = 2, and primitive trace <em>k</em>* = 1; resolves the split-Cartan base {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>} on the native (1/2)ℤ<sup>2</sup> lattice and proves the Native Lattice Interior Obstruction (<code>nativeInteriorCoords = []</code>); isolates <em>d</em><sub>ℂ</sub> = 2, cyclic-invariant diagonal dimension <em>d</em><sub>diag</sub> = 1, chiral multiplicity <em>r</em><sub>2</sub> = 3, and alternating Weyl torsion order <em>T</em> = |<em>A</em><sub>3</sub>| = 3; executes the short-root self-frustration leak cascade (5/36 → 1/36 → 0) to exact closure at <em>n</em>* = 5; proves the non-circular Archimedean interior sphere theorem over all ℕ; and certifies the Zero-Coordinate Obstruction and full-sphere uniqueness across all 343 lattice points of [−<em>T</em>..<em>T</em>]<sup>3</sup>.</li><li><strong>Module 2 (<code>GnosisOperatorSpectrum.lean</code>):</strong> Certifies the universal Frustration Partition Law (<em>η</em> + <em>F</em><sub>min</sub> = <em>F</em><sub>split</sub>, 8/36 + 1/36 = 9/36 = 1/4) and reciprocal scale Φ = 36; certifies the 6D orthonormal frame and signed spatial traces (Tr<sub>ℚ<sup>5</sup></sub>(<em>τ</em>) = +5, Tr<sub>ℚ<sup>5</sup></sub>(<em>Q</em>) = −5); proves the 25-pair partition identity across all synthesized generators; and proves the chiral Gram spectrum (<em>λ</em><sub>⊥</sub> = 1/36, <em>λ</em><sub>∥</sub> = 25/36) and contravariant Grade −1 core (<code>M_minus1_core = 1836</code>) simultaneously via spectral eigenvalues, explicit 3×3 adjugate cofactor matrix inversion (<em>G</em><sub>short</sub><em>G</em><sub>short</sub><sup>−1</sup> = <em>I</em><sub>3</sub>), and frustration quantum factorization (51 × 36 = 1836).</li><li><strong>Module 3 (<code>GnosisConformalAndBundles.lean</code>):</strong> Certifies the 8D conformal frame <code>W8.basis</code> and 4D horizon spinor frame <code>S4.basis</code>; proves 36-pair bilinear minimal polynomial closure on <em>V</em><sub>5</sub>, 9-pair McCrimmon TKK norm identity, 15-pair Null Horizon TKK invariance, and 216-triple Step-3 conformal nilpotency (<em>N</em><sub>conf</sub><sup>3</sup> = 0) on <em>W</em><sub>8</sub>; proves Step-4 spinor nilpotency (<em>M</em><sub>spin4</sub><sup>3</sup> ≠ 0, <em>M</em><sub>spin4</sub><sup>4</sup> = 0) on <em>S</em><sub>4</sub> yielding the odd unipotent holonomy polynomial sin<sub>3</sub>(<em>θ</em>) = <em>θ</em> − <em>θ</em><sup>3</sup>/3!; proves the Koszul–Vinberg Metric Fixed-Point identity in ℚ[<em>η</em>] locking <em>g</em><sub><em>X</em><sub>short</sub>(<em>η</em>)</sub>(<em>c</em><sub><em>i</em></sub>, <em>c</em><sub><em>i</em></sub>) = 2/9; certifies the 8×8 Kronecker-delta orthogonality (Δ = <em>I</em><sub>8</sub>) of the representation bundle catalog; and synthesizes the 23 pure spectral invariants (<code>emergentS</code>).</li></ul><p><strong>The Mathematical Firewall, Module 4 Empirical Audit, and Agrippa's Trilemma:</strong></p><p>Modules 1–3 enforce a strict Mathematical Firewall containing zero physical terminology and zero experimental constants. In Module 4 (<code>GnosisEmpiricalAndInformationAudit.lean</code>), the 23 sterile mathematical invariants of <code>emergentS</code> are mapped 1-to-1 to physical observable labels (<code>emergentO</code>) and verified in the Lean 4 kernel via <code>strict_binary_empirical_bound_theorem</code> to lie strictly within their measured 1<em>σ</em> empirical intervals, satisfying exact cross-sector conservation laws and compressing more than 197 bits of joint empirical Shannon information (<em>V</em><sub>23</sub> · 2<sup>197</sup> &lt; 1) from the single literal <code>0</code>, thereby closing all three horns of Agrippa's Trilemma (dogmatism, infinite regress, and circularity).</p>",
+  "keywords": [
+    "Lean 4",
+    "formal verification",
+    "Euclidean Jordan algebra",
+    "spin factor",
+    "Cartan Type IV symmetric domain",
+    "Tits-Kantor-Koecher Lie algebra",
+    "Koszul-Vinberg metric",
+    "Bergman operator",
+    "spectral invariants",
+    "topological frustration",
+    "representation theory",
+    "Agrippa's trilemma"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/nirvanatheory/GeometricNullOntologicalSpectralInvariantSymmetry",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
