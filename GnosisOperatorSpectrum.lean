@@ -4,9 +4,10 @@
   Verification Engine: Lean 4 (v4.28.0), zero axioms, zero sorrys, zero external dependencies.
 
   Strict Architectural & Mathematical Rules:
-  1. Zero Numeric Literals & Zero Constructors: No digits (`0..9`) and no `Nat.zero` or `Nat.succ`
-     constructors appear anywhere in this module; every input is a certified `.survivor` variable
-     inherited from `GnosisDomainFiltration.lean` or a preceding proof structure in this file.
+  1. Pure Mathematical Sterility: Zero physical terminology, zero numeric literals (`0..9`), and
+     zero `Nat.zero` or `Nat.succ` constructors appear anywhere in this module; every input is a
+     certified `.survivor` variable inherited from `GnosisDomainFiltration.lean` or a preceding
+     proof structure in this file.
   2. 100% `.survivor` Encapsulation: Every vector, identity element, orthonormal basis frame,
      signed spatial trace, matrix inverse entry, and operator invariant is declared exclusively
      as the `.survivor` output of a `VerifiedEmergence` proof structure.
@@ -14,16 +15,17 @@
      - Stage 1 (`proof_FrustrationQuanta`): Certifies the Frustration Partition Law
        `eta_quantum + F_min = F_split` and locks the four fundamental quanta (`1/36`, `2/9`, `1/4`, `17/36`).
      - Stage 2 (`proof_V5OrthonormalFrame`): Certifies `Vec5.zero`, `V5.zero`, `V5.e`, the 6D frame
-       `v5OrthonormalBasis`, the 5D spatial frame `spatialOrthonormalBasis`, the 36-pair Lorentzian/Jordan
+       `v5OrthonormalBasis`, the 5D spatial frame `spatialOrthonormalBasis`, the 36-pair pseudo-Riemannian/Jordan
        orthonormality identities, and the signed spatial traces (`euclideanSpatialTrace = +5`,
        `lorentzianSpatialTrace = -5`).
      - Stage 3 (`proof_V5BasisState`): Synthesizes `V_5 = Q e ⊕ Q^5`, proves equivalence of the
        native `(1/2)Z^2` and refined `(1/6)Z^2` split-Cartan pairs, and proves the 25-pair
        Frustration-Overlap Partition Identity across all generators.
-     - Stage 4 (`proof_GramSpectrumState`): Proves the chiral Gram spectrum and `1836` baryon core
-       via three convergent methods: (A) spectral eigenvalues (`1/36`, `25/36`), (B) explicit 3x3
-       adjugate matrix inverse `G_short * G_short^(-1) = I_3` (`gInvDiag = 612/25`, `gInvOff = -288/25`),
-       and (C) frustration quantum factorization (`51 * 36 = 1836`).
+     - Stage 4 (`proof_GramSpectrumState`): Proves the chiral Gram spectrum and `1836` contravariant
+       Grade -1 core via three convergent methods: (A) spectral eigenvalues (`1/36`, `25/36`),
+       (B) explicit 3x3 adjugate matrix inverse `G_short * G_short^(-1) = I_3` (`gInvDiag = 612/25`,
+       `gInvOff = -288/25`), and (C) frustration quantum factorization (`contravariantTraceQuanta = 51`,
+       `51 * 36 = 1836`).
      - Stage 5 (`proof_OperatorSpectrumState`): Proves the sector norms, longitudinal operator
        pencils, 6D trace vs. difference-of-squares inner derivation curvature (`17/1296`),
        triad derivation sum (`25/216`), Bergman polynomial (`-275/36`), and Koszul-Vinberg moduli.
@@ -91,7 +93,7 @@ def tau_chiral_pair   : Rat                     := frustrationQuanta.tau_chiral_
 
 -- ============================================================================
 -- STAGE 2: Proof-to-Variable Certification of the 6D Orthonormal Frame
---          & Signed Euclidean/Lorentzian Spatial Traces (+5 vs. -5)
+--          & Signed Euclidean/Hyperbolic Spatial Traces (+5 vs. -5)
 -- ============================================================================
 
 structure Vec5 where
@@ -165,7 +167,7 @@ structure V5OrthonormalFrameOutput where
   lorentzianSpatialTrace : Rat
   deriving Repr, DecidableEq
 
-/-- Convergent Specification of the 6D Lorentzian/Jordan Frame & Signed Spatial Traces:
+/-- Convergent Specification of the 6D Orthonormal Frame & Signed Spatial Traces:
     1. `basis6D = [b0, b1, b2, b3, b4, b5]` has length `p_star + n_star` (6), and
        `spatialBasis = [b1, b2, b3, b4, b5]` has length `n_star` (5).
     2. `v5_zero` is the additive identity and `v5_e = b0` is the Jordan multiplicative identity.
@@ -334,7 +336,7 @@ def s_gen (i : Nat) : V5 := listGetD splitBasis i V5.zero
 
 -- ============================================================================
 -- STAGE 4: Three-Way Convergent Proof of the Chiral Gram Spectrum, Explicit 3x3
---          Adjugate Inverse `G_short * G_short^(-1) = I_3`, & `1836` Baryon Core
+--          Adjugate Inverse `G_short * G_short^(-1) = I_3`, & `1836` Grade -1 Core
 -- ============================================================================
 
 def det2 (a11 a12 a21 a22 : Rat) : Rat := a11 * a22 - a12 * a21
@@ -345,33 +347,33 @@ def det3 (a11 a12 a13 a21 a22 a23 a31 a32 a33 : Rat) : Rat :=
   a13 * (a21 * a32 - a22 * a31)
 
 structure GramSpectrumOutput where
-  lambda_perp_G    : Rat
-  lambda_par_G     : Rat
-  anisotropyRatio  : Rat
-  det_C_short      : Rat
-  det_C_split      : Rat
-  det_C            : Rat
-  det_G_short      : Rat
-  gInvDiag         : Rat
-  gInvOff          : Rat
-  baryonCoreQuanta : Nat
-  tr_G_short_inv   : Rat
-  M_minus1_core    : Rat
+  lambda_perp_G            : Rat
+  lambda_par_G             : Rat
+  anisotropyRatio          : Rat
+  det_C_short              : Rat
+  det_C_split              : Rat
+  det_C                    : Rat
+  det_G_short              : Rat
+  gInvDiag                 : Rat
+  gInvOff                  : Rat
+  contravariantTraceQuanta : Nat
+  tr_G_short_inv           : Rat
+  M_minus1_core            : Rat
   deriving Repr, DecidableEq
 
-/-- Three-Way Convergent Specification of the Chiral Gram Spectrum & `1836` Baryon Core:
-    1. Spectral Proof (*Null Logos*): `lambda_perp_G = F_min` (1/36), `lambda_par_G = n_star^2 * F_min` (25/36),
+/-- Three-Way Convergent Specification of the Chiral Gram Spectrum & `1836` Grade -1 Core:
+    1. Spectral Proof: `lambda_perp_G = F_min` (1/36), `lambda_par_G = n_star^2 * F_min` (25/36),
        `anisotropyRatio = n_star^2` (25), and `tr_G_short_inv = 1/lambda_par_G + 2/lambda_perp_G` (1836/25).
-    2. Explicit 3x3 Adjugate Matrix Inverse Proof (*Cartan Trilogy*):
+    2. Explicit 3x3 Adjugate Matrix Inverse Proof:
        - Diagonal cofactor divided by `det_G_short` yields `gInvDiag = 612/25`;
        - Off-diagonal cofactor divided by `det_G_short` yields `gInvOff = -288/25`;
        - Exact matrix product `G_short * G_short^(-1) = I_3`:
          `F_split * gInvDiag + r1 * eta_quantum * gInvOff = k_star` (1) and
          `F_split * gInvOff + eta_quantum * gInvDiag + eta_quantum * gInvOff = NullCapacityRat` (0);
        - Exact matrix trace agreement: `r2 * gInvDiag = tr_G_short_inv` (1836/25).
-    3. Frustration Quantum Factorization (*Null Logos*):
-       `baryonCoreQuanta = r1 * n_star^2 + p_star = r2 * traceQuanta` (51), and
-       `M_minus1_core = anisotropyRatio * tr_G_short_inv = baryonCoreQuanta * Phi_inv` (1836). -/
+    3. Frustration Quantum Factorization:
+       `contravariantTraceQuanta = r1 * n_star^2 + p_star = r2 * traceQuanta` (51), and
+       `M_minus1_core = anisotropyRatio * tr_G_short_inv = contravariantTraceQuanta * Phi_inv` (1836). -/
 abbrev GramSpectrumSpec (g : GramSpectrumOutput) : Prop :=
   g.lambda_perp_G = F_min ∧
   g.lambda_par_G = ((n_star * n_star : Nat) : Rat) * F_min ∧
@@ -385,12 +387,12 @@ abbrev GramSpectrumSpec (g : GramSpectrumOutput) : Prop :=
   F_split * g.gInvDiag + (r1 : Rat) * eta_quantum * g.gInvOff = (k_star : Rat) ∧
   F_split * g.gInvOff + eta_quantum * g.gInvDiag + eta_quantum * g.gInvOff = NullCapacityRat ∧
   (r2 : Rat) * g.gInvDiag = g.tr_G_short_inv ∧
-  g.baryonCoreQuanta = r1 * n_star * n_star + p_star ∧
-  g.baryonCoreQuanta = r2 * traceQuanta ∧
+  g.contravariantTraceQuanta = r1 * n_star * n_star + p_star ∧
+  g.contravariantTraceQuanta = r2 * traceQuanta ∧
   g.tr_G_short_inv = ((k_star : Rat) / g.lambda_par_G) + (r1 : Rat) * ((k_star : Rat) / g.lambda_perp_G) ∧
-  g.tr_G_short_inv = ((g.baryonCoreQuanta : Rat) / g.anisotropyRatio) * Phi_inv ∧
+  g.tr_G_short_inv = ((g.contravariantTraceQuanta : Rat) / g.anisotropyRatio) * Phi_inv ∧
   g.M_minus1_core = g.anisotropyRatio * g.tr_G_short_inv ∧
-  g.M_minus1_core = (g.baryonCoreQuanta : Rat) * Phi_inv
+  g.M_minus1_core = (g.contravariantTraceQuanta : Rat) * Phi_inv
 
 /-- Proof 4.1: Three-way convergent certification of the chiral Gram spectrum and `1836` core. -/
 def proof_GramSpectrumState : VerifiedEmergence GramSpectrumSpec where
@@ -412,26 +414,26 @@ def proof_GramSpectrumState : VerifiedEmergence GramSpectrumSpec where
     let cof_off  := det2 g_ij g_ii g_ij g_ij
     let inv_diag := cof_diag / det_g
     let inv_off  := cof_off / det_g
-    let b_quanta := r1 * n_star * n_star + p_star
+    let c_quanta := r1 * n_star * n_star + p_star
     let tr_inv := ((k_star : Rat) / l_par) + (r1 : Rat) * ((k_star : Rat) / l_perp)
     let m_core := aniso * tr_inv
-    ⟨l_perp, l_par, aniso, det_sh, det_sp, det_c, det_g, inv_diag, inv_off, b_quanta, tr_inv, m_core⟩
+    ⟨l_perp, l_par, aniso, det_sh, det_sp, det_c, det_g, inv_diag, inv_off, c_quanta, tr_inv, m_core⟩
   certified := by decide +kernel
 
 /-- Output Variables 4.1: Stored outputs of `proof_GramSpectrumState`. -/
-def gramSpectrumState : GramSpectrumOutput := proof_GramSpectrumState.survivor
-def lambda_perp_G     : Rat                := gramSpectrumState.lambda_perp_G
-def lambda_par_G      : Rat                := gramSpectrumState.lambda_par_G
-def anisotropyRatio   : Rat                := gramSpectrumState.anisotropyRatio
-def det_C_short       : Rat                := gramSpectrumState.det_C_short
-def det_C_split       : Rat                := gramSpectrumState.det_C_split
-def det_C             : Rat                := gramSpectrumState.det_C
-def det_G_short       : Rat                := gramSpectrumState.det_G_short
-def gInvDiag          : Rat                := gramSpectrumState.gInvDiag
-def gInvOff           : Rat                := gramSpectrumState.gInvOff
-def baryonCoreQuanta  : Nat                := gramSpectrumState.baryonCoreQuanta
-def tr_G_short_inv    : Rat                := gramSpectrumState.tr_G_short_inv
-def M_minus1_core     : Rat                := gramSpectrumState.M_minus1_core
+def gramSpectrumState        : GramSpectrumOutput := proof_GramSpectrumState.survivor
+def lambda_perp_G            : Rat                := gramSpectrumState.lambda_perp_G
+def lambda_par_G             : Rat                := gramSpectrumState.lambda_par_G
+def anisotropyRatio          : Rat                := gramSpectrumState.anisotropyRatio
+def det_C_short              : Rat                := gramSpectrumState.det_C_short
+def det_C_split              : Rat                := gramSpectrumState.det_C_split
+def det_C                    : Rat                := gramSpectrumState.det_C
+def det_G_short              : Rat                := gramSpectrumState.det_G_short
+def gInvDiag                 : Rat                := gramSpectrumState.gInvDiag
+def gInvOff                  : Rat                := gramSpectrumState.gInvOff
+def contravariantTraceQuanta : Nat                := gramSpectrumState.contravariantTraceQuanta
+def tr_G_short_inv           : Rat                := gramSpectrumState.tr_G_short_inv
+def M_minus1_core            : Rat                := gramSpectrumState.M_minus1_core
 
 -- ============================================================================
 -- STAGE 5: Proof-to-Variable Isolation of V_5 Operators, Derivations, & Moduli
@@ -470,7 +472,7 @@ structure OperatorSpectrumOutput where
 /-- Convergent Specification of the V_5 Operator Spectrum:
     1. `Q(X_short) = latticeDenom * F_min` (1/6) and `Q(X_split) = (r1 * normTarget) * F_min` (1/2).
     2. `tr_M_par = (r1 + normTarget) * F_min` (11/36), `det_M_par = -(normTarget + d_C * r1) * F_min` (-13/36),
-       and `det_J_par = (baryonCoreQuanta * c0_scalar) * F_min` (17/24).
+       and `det_J_par = (contravariantTraceQuanta * c0_scalar) * F_min` (17/24).
     3. Convergent Inner Derivation Curvature: `omegaSq(c_0, c_1)` computed via 6D operator trace
        equals both `(F_split - eta_quantum) * (F_split + eta_quantum)` and `F_min * tau_chiral_pair` (17/1296).
     4. `h_poly(X_short, X_short) = -(n_star^2 * (r1 + normTarget)) * F_min` (-275/36) < 0.
@@ -484,7 +486,7 @@ abbrev OperatorSpectrumSpec (s : OperatorSpectrumOutput) : Prop :=
   s.Q_split_val / s.Q_short_val = (T : Rat) ∧
   s.tr_M_par = ((r1 + normTarget : Nat) : Rat) * F_min ∧
   s.det_M_par = -(((normTarget + d_C * r1 : Nat) : Rat) * F_min) ∧
-  s.det_J_par = ((baryonCoreQuanta : Rat) * c0_scalar) * F_min ∧
+  s.det_J_par = ((contravariantTraceQuanta : Rat) * c0_scalar) * F_min ∧
   (((d_C * r1 * latticeDenom : Nat) : Rat) * s.det_J_par) = (traceQuanta : Rat) ∧
   s.omegaSq_chiral_pair = (F_split - eta_quantum) * (F_split + eta_quantum) ∧
   s.omegaSq_chiral_pair = F_min * tau_chiral_pair ∧
@@ -545,38 +547,38 @@ def mu_2_frust            : Rat                    := operatorSpectrumState.mu_2
 -- ============================================================================
 
 structure GnosisOperatorSpectrumReadout where
-  F_min                  : Rat := F_min
-  Phi_inv                : Rat := Phi_inv
-  F_split                : Rat := F_split
-  eta_quantum            : Rat := eta_quantum
-  overlapQuanta          : Nat := overlapQuanta
-  traceQuanta            : Nat := traceQuanta
-  tau_chiral_pair        : Rat := tau_chiral_pair
-  euclideanSpatialTrace  : Rat := euclideanSpatialTrace
-  lorentzianSpatialTrace : Rat := lorentzianSpatialTrace
-  lambda_perp_G          : Rat := lambda_perp_G
-  lambda_par_G           : Rat := lambda_par_G
-  det_C_short            : Rat := det_C_short
-  det_C_split            : Rat := det_C_split
-  det_C                  : Rat := det_C
-  gInvDiag               : Rat := gInvDiag
-  gInvOff                : Rat := gInvOff
-  baryonCoreQuanta       : Nat := baryonCoreQuanta
-  tr_G_short_inv         : Rat := tr_G_short_inv
-  M_minus1_core          : Rat := M_minus1_core
-  Q_short_val            : Rat := Q_short_val
-  Q_split_val            : Rat := Q_split_val
-  tr_M_par               : Rat := tr_M_par
-  det_M_par              : Rat := det_M_par
-  det_J_par              : Rat := det_J_par
-  omegaSq_chiral_pair    : Rat := omegaSq_chiral_pair
-  secCurv_chiral_pair    : Rat := secCurv_chiral_pair
-  chiralDerivationSum    : Rat := chiralDerivationSum
-  h_poly_short           : Rat := h_poly_short
-  Q_pol_total_chiral     : Rat := Q_pol_total_chiral
-  Q_pol_total_split      : Rat := Q_pol_total_split
-  mu_1_frust             : Rat := mu_1_frust
-  mu_2_frust             : Rat := mu_2_frust
+  F_min                    : Rat := F_min
+  Phi_inv                  : Rat := Phi_inv
+  F_split                  : Rat := F_split
+  eta_quantum              : Rat := eta_quantum
+  overlapQuanta            : Nat := overlapQuanta
+  traceQuanta              : Nat := traceQuanta
+  tau_chiral_pair          : Rat := tau_chiral_pair
+  euclideanSpatialTrace    : Rat := euclideanSpatialTrace
+  lorentzianSpatialTrace   : Rat := lorentzianSpatialTrace
+  lambda_perp_G            : Rat := lambda_perp_G
+  lambda_par_G             : Rat := lambda_par_G
+  det_C_short              : Rat := det_C_short
+  det_C_split              : Rat := det_C_split
+  det_C                    : Rat := det_C
+  gInvDiag                 : Rat := gInvDiag
+  gInvOff                  : Rat := gInvOff
+  contravariantTraceQuanta : Nat := contravariantTraceQuanta
+  tr_G_short_inv           : Rat := tr_G_short_inv
+  M_minus1_core            : Rat := M_minus1_core
+  Q_short_val              : Rat := Q_short_val
+  Q_split_val              : Rat := Q_split_val
+  tr_M_par                 : Rat := tr_M_par
+  det_M_par                : Rat := det_M_par
+  det_J_par                : Rat := det_J_par
+  omegaSq_chiral_pair      : Rat := omegaSq_chiral_pair
+  secCurv_chiral_pair      : Rat := secCurv_chiral_pair
+  chiralDerivationSum      : Rat := chiralDerivationSum
+  h_poly_short             : Rat := h_poly_short
+  Q_pol_total_chiral       : Rat := Q_pol_total_chiral
+  Q_pol_total_split        : Rat := Q_pol_total_split
+  mu_1_frust               : Rat := mu_1_frust
+  mu_2_frust               : Rat := mu_2_frust
   deriving Repr, DecidableEq
 
 /-- Proof 6.1: Final verified readout object of Module 2. -/
@@ -586,7 +588,7 @@ def proof_spectrumCascadeReadout :
       r.euclideanSpatialTrace + r.lorentzianSpatialTrace = NullCapacityRat ∧
       r.lambda_perp_G = r.F_min ∧
       (r2 : Rat) * r.gInvDiag = r.tr_G_short_inv ∧
-      r.M_minus1_core = (r.baryonCoreQuanta : Rat) * r.Phi_inv ∧
+      r.M_minus1_core = (r.contravariantTraceQuanta : Rat) * r.Phi_inv ∧
       r.omegaSq_chiral_pair = r.F_min * r.tau_chiral_pair ∧
       r.mu_1_frust = (r.Q_pol_total_chiral / r.Q_pol_total_split) ^ r1) where
   survivor := {}
