@@ -1,9 +1,12 @@
 name = "GeometricNullOntologicalSpectralInvariantSymmetry"
 version = "1.0.0"
-defaultTargets = ["GnosisDomainFiltration", "GnosisOperatorSpectrum"]
+defaultTargets = ["GnosisDomainFiltration", "GnosisOperatorSpectrum", "GnosisConformalAndBundles"]
 
 [[lean_lib]]
 name = "GnosisDomainFiltration"
 
 [[lean_lib]]
 name = "GnosisOperatorSpectrum"
+
+[[lean_lib]]
+name = "GnosisConformalAndBundles"
