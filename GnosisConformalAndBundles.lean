@@ -1,20 +1,20 @@
 /-
   GeometricNullOntologicalSpectralInvariantSymmetry — GnosisConformalAndBundles.lean (Module 3)
   Master Convergent Proof-to-Variable Cascade: W_8 & S_4 Nilpotency, Polynomial Fixed-Point,
-  Orthogonal Bundle Contraction, Signed Spatial Trace Lock, & 23 Synthesized Observables
+  Orthogonal Bundle Contraction, Signed Spatial Trace Lock, & 23 Synthesized Spectral Invariants
   Verification Engine: Lean 4 (v4.28.0), zero axioms, zero sorrys, zero external dependencies.
 
   Strict Architectural & Mathematical Rules:
-  1. Zero Numeric Literals & Zero Constructors: No digits (`0..9`) and no `Nat.zero` or `Nat.succ`
-     constructors appear anywhere in this module; every input is a certified `.survivor` variable
-     inherited from `GnosisDomainFiltration.lean`, `GnosisOperatorSpectrum.lean`, or a preceding
-     proof structure in this file.
+  1. Pure Mathematical Sterility: Zero physical terminology, zero numeric literals (`0..9`), and
+     zero `Nat.zero` or `Nat.succ` constructors appear anywhere in this module; every input is a
+     certified `.survivor` variable inherited from `GnosisDomainFiltration.lean`,
+     `GnosisOperatorSpectrum.lean`, or a preceding proof structure in this file.
   2. 100% `.survivor` Encapsulation: Every dimension, basis frame (`W8.basis`, `S4.basis`),
      operator invariant, polynomial identity (`QuadPoly`), representation signature (`RepSignature`),
-     bundle catalog, and observable readout exists solely as the `.survivor` output of a
+     bundle catalog, and spectral invariant readout exists solely as the `.survivor` output of a
      `VerifiedEmergence` proof structure.
   3. Multi-Proof Convergence at Every Stage:
-     - Stage 1 (`proof_ConformalDimensions`): Isolates `d_spacetime = 4`, `dim_V5 = 6`,
+     - Stage 1 (`proof_ConformalDimensions`): Isolates `d_horizon = 4`, `dim_V5 = 6`,
        `dim_W8 = 8`, `dim_der_V5 = 10`, and `N_S = 16`, proving Schur-Weyl spinor closure.
      - Stage 2 (`proof_JordanConformalOperators`): Certifies `Y_dual`, `W0_chiral`, `z_loop`,
        McCrimmon's TKK identity `Q(X - P(X)Y) = Q(X)h(X,Y)` across all 9 sector pairs,
@@ -28,13 +28,14 @@
          that the odd spinor exponential `(exp_S4(theta) - exp_S4(-theta))/2` yields `sin3(theta)`
          identically, sealing the nilpotent spinor origin of `sin_3`.
        * Proves the Koszul-Vinberg Metric Fixed-Point identity `kvShortNumPoly = scaleQuad eta_quantum kvShortDenomPoly`
-         and the No-Tuning polynomial factorizations in `Q[eta]`.
+         and the cross-sector polynomial factorizations in `Q[eta]`.
      - Stage 4 (`proof_BundleCatalogAndCasimirs`): Certifies the `so(5)` Casimir spectrum,
        `Phi_inv = 36` bundle quantization, the 8 `RepSignature` tuples, and `Delta = I_8`.
      - Stage 5 (`proof_HolonomyReadout` -> `proof_InstantonReadout` -> `proof_BoundaryReadout` ->
-       `proof_ObservablesReadout`): Synthesizes all 23 observables using pure additive bundle
-       contractions driven by `lorentzianSpatialTrace = -5`, `euclideanSpatialTrace = +5`,
-       `h_poly_short = -275/36 < 0`, and `tkk_ratio_cross = -12/23 < 0`.
+       `proof_SpectralInvariantsReadout`): Synthesizes all 23 canonical spectral and holonomy
+       invariants (`emergentS`) using pure additive bundle contractions driven by
+       `lorentzianSpatialTrace = -5`, `euclideanSpatialTrace = +5`, `h_poly_short = -275/36 < 0`,
+       and `tkk_ratio_cross = -12/23 < 0`.
 -/
 
 import GnosisOperatorSpectrum
@@ -46,49 +47,49 @@ open GeometricNullOntologicalSpectralInvariantSymmetry.GnosisOperatorSpectrum
 open Vec5 V5
 
 -- ============================================================================
--- STAGE 1: Proof-to-Variable Isolation of Spacetime, Conformal, & Spinor Dimensions
+-- STAGE 1: Proof-to-Variable Isolation of Horizon, Conformal, & Spinor Dimensions
 -- ============================================================================
 
 structure ConformalDimensionsOutput where
-  d_spacetime : Nat
-  dim_V5      : Nat
-  dim_W8      : Nat
-  dim_der_V5  : Nat
-  N_S         : Nat
+  d_horizon  : Nat
+  dim_V5     : Nat
+  dim_W8     : Nat
+  dim_der_V5 : Nat
+  N_S        : Nat
   deriving Repr, DecidableEq
 
-/-- Convergent Specification of the Emergent Spacetime, Conformal, & Spinor Dimensions:
-    1. `d_spacetime = horizonSphereDim n_star` (4) is the Shilov horizon and fundamental spinor rank.
-    2. `dim_V5 = n_star + p_star` (6) equals both `v5OrthonormalBasis.length` and `C(d_spacetime, r1)`.
+/-- Convergent Specification of the Emergent Horizon, Conformal, & Spinor Dimensions:
+    1. `d_horizon = horizonSphereDim n_star` (4) is the Shilov horizon and fundamental spinor rank.
+    2. `dim_V5 = n_star + p_star` (6) equals both `v5OrthonormalBasis.length` and `C(d_horizon, r1)`.
     3. `dim_W8 = dim_V5 + r1` (8) equals the chiral overlap quantum count `overlapQuanta`.
-    4. `dim_der_V5 = derivationDim n_star` (10) equals the symmetric spinor square `d_spacetime*(d_spacetime+1)/2`.
-    5. `N_S = r1 ^ d_spacetime` (16) satisfies the Schur-Weyl identity `dim_V5 + dim_der_V5 = N_S`. -/
+    4. `dim_der_V5 = derivationDim n_star` (10) equals the symmetric spinor square `d_horizon*(d_horizon+1)/2`.
+    5. `N_S = r1 ^ d_horizon` (16) satisfies the Schur-Weyl identity `dim_V5 + dim_der_V5 = N_S`. -/
 abbrev ConformalDimensionsSpec (d : ConformalDimensionsOutput) : Prop :=
-  d.d_spacetime = horizonSphereDim n_star ∧
+  d.d_horizon = horizonSphereDim n_star ∧
   d.dim_V5 = n_star + p_star ∧
   d.dim_V5 = v5OrthonormalBasis.length ∧
-  d.dim_V5 = exteriorDim d.d_spacetime r1 ∧
+  d.dim_V5 = exteriorDim d.d_horizon r1 ∧
   d.dim_W8 = d.dim_V5 + r1 ∧
   d.dim_W8 = overlapQuanta ∧
   d.dim_der_V5 = derivationDim n_star ∧
-  d.dim_der_V5 = (d.d_spacetime * (d.d_spacetime + p_star)) / r1 ∧
-  d.N_S = r1 ^ d.d_spacetime ∧
+  d.dim_der_V5 = (d.d_horizon * (d.d_horizon + p_star)) / r1 ∧
+  d.N_S = r1 ^ d.d_horizon ∧
   d.dim_V5 + d.dim_der_V5 = d.N_S
 
-/-- Proof 1.1: Certification of the emergent spacetime, conformal, and spinor dimensions. -/
+/-- Proof 1.1: Certification of the emergent horizon, conformal, and spinor dimensions. -/
 def proof_ConformalDimensions : VerifiedEmergence ConformalDimensionsSpec where
   survivor :=
-    let d_sp := horizonSphereDim n_star
-    let d_v5 := n_star + p_star
-    let d_w8 := d_v5 + r1
+    let d_h   := horizonSphereDim n_star
+    let d_v5  := n_star + p_star
+    let d_w8  := d_v5 + r1
     let d_der := derivationDim n_star
-    let n_s := r1 ^ d_sp
-    ⟨d_sp, d_v5, d_w8, d_der, n_s⟩
+    let n_s   := r1 ^ d_h
+    ⟨d_h, d_v5, d_w8, d_der, n_s⟩
   certified := by decide +kernel
 
 /-- Output Variables 1.1: Stored outputs of `proof_ConformalDimensions`. -/
 def conformalDims : ConformalDimensionsOutput := proof_ConformalDimensions.survivor
-def d_spacetime   : Nat                       := conformalDims.d_spacetime
+def d_horizon     : Nat                       := conformalDims.d_horizon
 def dim_V5        : Nat                       := conformalDims.dim_V5
 def dim_W8        : Nat                       := conformalDims.dim_W8
 def dim_der_V5    : Nat                       := conformalDims.dim_der_V5
@@ -120,7 +121,7 @@ def gaussNormSq (z : GaussRat) : Rat := z.re * z.re + z.im * z.im
 def P_11 (nu : Rat) : Rat := nu * (nu - (r2 : Rat) / (r1 : Rat))
 def P_20 (nu : Rat) : Rat := nu * (nu + (k_star : Rat))
 
-def B_g_cross (U V : V5) : Rat := ((d_spacetime * dim_V5 : Nat) : Rat) * tau U V
+def B_g_cross (U V : V5) : Rat := ((d_horizon * dim_V5 : Nat) : Rat) * tau U V
 def B_g_str (T1 T2 : V5 → V5) : Rat :=
   (dim_V5 : Rat) * trace6D (fun Z => T1 (T2 Z)) -
   ((r1 : Rat) / (r2 : Rat)) * trace6D T1 * trace6D T2
@@ -160,7 +161,7 @@ abbrev JordanConformalOperatorsSpec (s : JordanConformalOperatorsOutput) : Prop 
   s.W0_chiral = w_perp_leak + c0_scalar * ((r2 : Rat) * eta_quantum) ∧
   s.z_loop = ⟨(r1 : Rat) * s.W0_chiral, (r1 : Rat) * det_C_short⟩ ∧
   s.Q_total_val = Q X_total ∧
-  s.Q_total_val = ((d_spacetime * r2 * (r1 + normTarget) : Nat) : Rat) * F_min ∧
+  s.Q_total_val = ((d_horizon * r2 * (r1 + normTarget) : Nat) : Rat) * F_min ∧
   s.normSq_total_vec = Vec5.normSq X_total.vec ∧
   s.B_flat_val = (s.Y_dual.x0 ^ r1) / Q s.Y_dual ∧
   s.tr_L_total_sq = trace6D (fun Z => L_op X_total (L_op X_total Z)) ∧
@@ -285,13 +286,13 @@ structure W8AndS4FramesOutput where
 
 /-- Specification of the 8D Conformal Frame (`W_8`) and 4D Fundamental Spinor Frame (`S_4`):
     1. `w8_basis` has length `dim_W8` (8) and `w8_zero` is the additive identity on `W_8`.
-    2. `s4_basis` has length `d_spacetime` (4), `s4_zero` is the additive identity on `S_4`,
+    2. `s4_basis` has length `d_horizon` (4), `s4_zero` is the additive identity on `S_4`,
        and `s4_top` is the highest-weight spinor basis vector `(0, 0, 0, 1)`. -/
 abbrev W8AndS4FramesSpec (f : W8AndS4FramesOutput) : Prop :=
   f.w8_basis.length = dim_W8 ∧
   f.w8_zero = ⟨NullCapacityRat, V5.zero, NullCapacityRat⟩ ∧
   (f.w8_basis.all (fun w => decide (W8.add f.w8_zero w = w))) = true ∧
-  f.s4_basis.length = d_spacetime ∧
+  f.s4_basis.length = d_horizon ∧
   f.s4_zero = ⟨NullCapacityRat, NullCapacityRat, NullCapacityRat, NullCapacityRat⟩ ∧
   (f.s4_basis.all (fun s => decide (S4.add f.s4_zero s = s))) = true ∧
   f.s4_top = listGetD f.s4_basis r2 f.s4_zero ∧
@@ -365,7 +366,7 @@ def oddExpS4Trace (theta : Rat) : Rat :=
   S4.coordSum (S4.smul ((k_star : Rat) / (r1 : Rat))
                 (S4.sub (expS4 theta s4_top) (expS4 (-theta) s4_top)))
 
-/-- Canonical Grade-`r2` odd Lie exponential map `sin_3(theta) = theta - theta^3 / 3!`. -/
+/-- Canonical Grade-`r2` odd Lie exponential polynomial `sin_3(theta) = theta - theta^3 / 3!`. -/
 def sin3 (theta : Rat) : Rat :=
   theta - (theta ^ r2) / (factorial r2 : Rat)
 
@@ -411,11 +412,11 @@ structure ConformalW8AndRigidityOutput where
     1. Full-Basis Bilinearity & Trilinearity:
        - `allBasisPairsMinPolyZero = true` (all 36 basis pairs of `V_5`).
        - `allBasisTriplesConformalCubeZero = true` (all 216 basis triples of `V_5` on `W_8`).
-    2. `W_8` Index-3 Nilpotency vs. `S_4` Index-4 Spinor Nilpotency (Seals Audit #3):
+    2. `W_8` Index-3 Nilpotency vs. `S_4` Index-4 Spinor Nilpotency:
        - On `W_8`: `N_conf(e_A)^2 = 0` for horizon idempotents, while `N_conf(X)^2 != 0` and `N_conf(X)^3 = 0` for bulk sectors.
        - On `S_4`: `M_spin4^1 != 0`, `M_spin4^2 != 0`, `M_spin4^3 != 0`, and `M_spin4^4 = 0` across all of `S_4`,
-         with exterior vanishing `exteriorDim r2 d_spacetime = 0` (`C(3, 4) = 0`), and `oddExpS4Trace theta = sin3 theta`.
-    3. Three-Way Convergent Polynomial Rigidity in `Q[eta]` (Seals Audit #4):
+         with exterior vanishing `exteriorDim r2 d_horizon = 0` (`C(3, 4) = 0`), and `oddExpS4Trace theta = sin3 theta`.
+    3. Three-Way Convergent Polynomial Rigidity in `Q[eta]`:
        - Koszul-Vinberg Metric Fixed-Point Identity: `kvShortNumPoly = scaleQuad eta_quantum kvShortDenomPoly`
          (and `subQuad = quadPoly_zero`), proving `g_{X_short(eta)}(c_i(eta), c_i(eta)) = 2/9` identically in `Q[eta]`.
        - Cross-Sector Factorization: `subQuad kvMu1Poly specMu1Poly = poly_mu1_lock` and
@@ -423,7 +424,7 @@ structure ConformalW8AndRigidityOutput where
 abbrev ConformalW8AndRigiditySpec (s : ConformalW8AndRigidityOutput) : Prop :=
   v5OrthonormalBasis.length = dim_V5 ∧
   W8.basis.length = dim_W8 ∧
-  S4.basis.length = d_spacetime ∧
+  S4.basis.length = d_horizon ∧
   allBasisPairsMinPolyZero = true ∧
   allBasisTriplesConformalCubeZero = true ∧
   minPolyResidual c_gen_0 = V5.zero ∧
@@ -447,7 +448,7 @@ abbrev ConformalW8AndRigiditySpec (s : ConformalW8AndRigidityOutput) : Prop :=
   isZeroOnS4 (fun u => M_spin4 (M_spin4 u)) = false ∧
   isZeroOnS4 (fun u => M_spin4 (M_spin4 (M_spin4 u))) = false ∧
   isZeroOnS4 (fun u => M_spin4 (M_spin4 (M_spin4 (M_spin4 u)))) = true ∧
-  exteriorDim r2 d_spacetime = NullCapacity ∧
+  exteriorDim r2 d_horizon = NullCapacity ∧
   exteriorDim r2 n_star = NullCapacity ∧
   oddExpS4Trace eta_quantum = sin3 eta_quantum ∧
   oddExpS4Trace F_split = sin3 F_split ∧
@@ -562,8 +563,8 @@ structure BundleCatalogAndCasimirsOutput where
   dim_VectorSpinorBundle    : Nat
   weylCasimirB2             : Rat
   tr_WeylCasimir_VecSpinor  : Rat
-  dim_SpacetimeTensor4      : Nat
-  tr_Casimir_SpacetimeTens4 : Rat
+  dim_HorizonTensor4        : Nat
+  tr_Casimir_HorizonTens4   : Rat
   sig_EndLink               : RepSignature
   sig_Orbifold4D            : RepSignature
   sig_Horizon4D             : RepSignature
@@ -581,10 +582,10 @@ structure BundleCatalogAndCasimirsOutput where
     3. `bundleCatalog` has length `dim_W8` (8), satisfies `signatureOrthogonalityCheck = true` (`Delta = I_8`),
        and every signature resolves to a unique singleton of length `p_star` (1). -/
 abbrev BundleCatalogAndCasimirsSpec (b : BundleCatalogAndCasimirsOutput) : Prop :=
-  b.C2_vec5 = (d_spacetime : Rat) ∧
+  b.C2_vec5 = (d_horizon : Rat) ∧
   b.C2_adj10 = (dim_V5 : Rat) ∧
-  b.dim_ThreeSpinorBundle = d_spacetime ^ r2 ∧
-  b.dim_ThreeSpinorBundle = d_spacetime * N_S ∧
+  b.dim_ThreeSpinorBundle = d_horizon ^ r2 ∧
+  b.dim_ThreeSpinorBundle = d_horizon * N_S ∧
   b.threeSpinorChiralVol = (b.dim_ThreeSpinorBundle : Rat) / (r2 : Rat) ∧
   b.trInvC2_alt_Q5_cube = Q_pol X_total X_short ∧
   b.trInvC2_alt_Q5_cube / (dim_der_V5 : Rat) = Q_short_val ∧
@@ -592,7 +593,7 @@ abbrev BundleCatalogAndCasimirsSpec (b : BundleCatalogAndCasimirsOutput) : Prop 
   b.trInvC2_mix_Q5_cube = (dim_V5 : Rat) * lambda_par_G ∧
   b.trInvC2_tot_Q5_cube / (n_star : Rat) = normSq_total_vec ∧
   (b.det_J_short_3 - b.det_M_short_3) / det_G_short = (r1 : Rat) ∧
-  (b.dim_End_LinkBundle : Rat) = ((d_spacetime * N_S : Nat) : Rat) * Phi_inv ∧
+  (b.dim_End_LinkBundle : Rat) = ((d_horizon * N_S : Nat) : Rat) * Phi_inv ∧
   (b.dim_Orbifold4D : Rat) = ((T ^ r1 : Nat) : Rat) * Phi_inv ∧
   (b.dim_HorizonBundle : Rat) = (r1 : Rat) * (Phi_inv ^ r1) ∧
   (b.dim_TorusBundle : Rat) = (dim_W8 : Rat) * Phi_inv ∧
@@ -600,7 +601,7 @@ abbrev BundleCatalogAndCasimirsSpec (b : BundleCatalogAndCasimirsOutput) : Prop 
   b.weylCasimirB2 = (tau_chiral_pair * Phi_inv) / (r1 : Rat) ∧
   b.weylCasimirB2 = (traceQuanta : Rat) / (r1 : Rat) ∧
   b.tr_WeylCasimir_VecSpinor = (b.dim_VectorSpinorBundle : Rat) * b.weylCasimirB2 ∧
-  b.tr_Casimir_SpacetimeTens4 = b.C2_vec5 * (b.dim_SpacetimeTensor4 : Rat) ∧
+  b.tr_Casimir_HorizonTens4 = b.C2_vec5 * (b.dim_HorizonTensor4 : Rat) ∧
   b.bundleCatalog =
     [ ⟨b.sig_EndLink,         (b.dim_End_LinkBundle : Rat)⟩,
       ⟨b.sig_Orbifold4D,      (b.dim_Orbifold4D : Rat)⟩,
@@ -609,7 +610,7 @@ abbrev BundleCatalogAndCasimirsSpec (b : BundleCatalogAndCasimirsOutput) : Prop 
       ⟨b.sig_EndJordanSpinor, (b.dim_End_JordanSpinor : Rat)⟩,
       ⟨b.sig_ThreeSpinor,     b.threeSpinorChiralVol⟩,
       ⟨b.sig_VecSpinorUnip,   b.tr_WeylCasimir_VecSpinor⟩,
-      ⟨b.sig_BulkTensor4D,    b.tr_Casimir_SpacetimeTens4⟩ ] ∧
+      ⟨b.sig_BulkTensor4D,    b.tr_Casimir_HorizonTens4⟩ ] ∧
   b.bundleCatalog.length = dim_W8 ∧
   signatureOrthogonalityCheck b.bundleCatalog = true ∧
   (b.bundleCatalog.all (fun item =>
@@ -639,28 +640,28 @@ def proof_BundleCatalogAndCasimirs : VerifiedEmergence BundleCatalogAndCasimirsS
                     (Q_pol c_gen_2 c_gen_0) (Q_pol c_gen_2 c_gen_1) (Q_pol c_gen_2 c_gen_2)
     let d_link := N_S * T
     let d_end_link := d_link * d_link
-    let d_orb4 := d_spacetime * (T ^ d_spacetime)
-    let d_hor4 := r1 * N_S * (T ^ d_spacetime)
+    let d_orb4 := d_horizon * (T ^ d_horizon)
+    let d_hor4 := r1 * N_S * (T ^ d_horizon)
     let d_tor2 := r1 * N_S * (T ^ r1)
     let d_jspin := dim_V5 * N_S
     let d_end_jspin := d_jspin * d_jspin
-    let d_3spin := r2 * d_spacetime + r1 * N_S + p_star * (d_spacetime + N_S)
+    let d_3spin := r2 * d_horizon + r1 * N_S + p_star * (d_horizon + N_S)
     let v_3spin := (d_3spin : Rat) / (r2 : Rat)
     let d_vspin := n_star * N_S
-    let w_cas := (((d_spacetime * dim_V5 : Nat) : Rat) * det_J_par) / (r1 : Rat)
+    let w_cas := (((d_horizon * dim_V5 : Nat) : Rat) * det_J_par) / (r1 : Rat)
     let tr_w_vspin := (d_vspin : Rat) * w_cas
-    let d_spt4 := n_star ^ d_spacetime
-    let tr_c_spt4 := c2_v5 * (d_spt4 : Rat)
+    let d_ht4 := n_star ^ d_horizon
+    let tr_c_ht4 := c2_v5 * (d_ht4 : Rat)
     let z_int := Int.ofNat NullCapacity
     let p_int := Int.ofNat p_star
     let s_link  : RepSignature := ⟨NullCapacity, r1, r1, z_int⟩
-    let s_orb4  : RepSignature := ⟨NullCapacity, p_star, d_spacetime, z_int⟩
-    let s_hor4  : RepSignature := ⟨p_star, p_star, d_spacetime, z_int⟩
+    let s_orb4  : RepSignature := ⟨NullCapacity, p_star, d_horizon, z_int⟩
+    let s_hor4  : RepSignature := ⟨p_star, p_star, d_horizon, z_int⟩
     let s_tor2  : RepSignature := ⟨p_star, p_star, r1, z_int⟩
     let s_jspin : RepSignature := ⟨r1, r1, NullCapacity, z_int⟩
     let s_3spin : RepSignature := ⟨NullCapacity, r2, NullCapacity, p_int⟩
     let s_vspin : RepSignature := ⟨p_star, p_star, NullCapacity, -p_int⟩
-    let s_spt4  : RepSignature := ⟨p_star, NullCapacity, d_spacetime, p_int⟩
+    let s_ht4   : RepSignature := ⟨p_star, NullCapacity, d_horizon, p_int⟩
     let cat : List TypedInvariant :=
       [ ⟨s_link,  (d_end_link : Rat)⟩,
         ⟨s_orb4,  (d_orb4 : Rat)⟩,
@@ -669,37 +670,37 @@ def proof_BundleCatalogAndCasimirs : VerifiedEmergence BundleCatalogAndCasimirsS
         ⟨s_jspin, (d_end_jspin : Rat)⟩,
         ⟨s_3spin, v_3spin⟩,
         ⟨s_vspin, tr_w_vspin⟩,
-        ⟨s_spt4,  tr_c_spt4⟩ ]
+        ⟨s_ht4,   tr_c_ht4⟩ ]
     ⟨c2_s4, c2_s16, c2_s20, c2_v5, c2_a10, c2_s30, c2_m35,
      tr_alt, tr_sym, tr_mix, tr_tot, dj3, dm3,
      d_end_link, d_orb4, d_hor4, d_tor2, d_end_jspin, d_3spin, v_3spin,
-     d_vspin, w_cas, tr_w_vspin, d_spt4, tr_c_spt4,
-     s_link, s_orb4, s_hor4, s_tor2, s_jspin, s_3spin, s_vspin, s_spt4, cat⟩
+     d_vspin, w_cas, tr_w_vspin, d_ht4, tr_c_ht4,
+     s_link, s_orb4, s_hor4, s_tor2, s_jspin, s_3spin, s_vspin, s_ht4, cat⟩
   certified := by decide +kernel
 
 /-- Output Variables 4.1: Stored outputs of `proof_BundleCatalogAndCasimirs`. -/
-def bundleAndCasimirState     : BundleCatalogAndCasimirsOutput := proof_BundleCatalogAndCasimirs.survivor
-def dim_End_LinkBundle        : Nat                            := bundleAndCasimirState.dim_End_LinkBundle
-def dim_Orbifold4D            : Nat                            := bundleAndCasimirState.dim_Orbifold4D
-def dim_HorizonBundle         : Nat                            := bundleAndCasimirState.dim_HorizonBundle
-def dim_TorusBundle           : Nat                            := bundleAndCasimirState.dim_TorusBundle
-def dim_End_JordanSpinor      : Nat                            := bundleAndCasimirState.dim_End_JordanSpinor
-def dim_ThreeSpinorBundle     : Nat                            := bundleAndCasimirState.dim_ThreeSpinorBundle
-def threeSpinorChiralVol      : Rat                            := bundleAndCasimirState.threeSpinorChiralVol
-def dim_VectorSpinorBundle    : Nat                            := bundleAndCasimirState.dim_VectorSpinorBundle
-def weylCasimirB2             : Rat                            := bundleAndCasimirState.weylCasimirB2
-def tr_WeylCasimir_VecSpinor  : Rat                            := bundleAndCasimirState.tr_WeylCasimir_VecSpinor
-def dim_SpacetimeTensor4      : Nat                            := bundleAndCasimirState.dim_SpacetimeTensor4
-def tr_Casimir_SpacetimeTens4 : Rat                            := bundleAndCasimirState.tr_Casimir_SpacetimeTens4
-def sig_EndLink               : RepSignature                   := bundleAndCasimirState.sig_EndLink
-def sig_Orbifold4D            : RepSignature                   := bundleAndCasimirState.sig_Orbifold4D
-def sig_Horizon4D             : RepSignature                   := bundleAndCasimirState.sig_Horizon4D
-def sig_Torus2D               : RepSignature                   := bundleAndCasimirState.sig_Torus2D
-def sig_EndJordanSpinor       : RepSignature                   := bundleAndCasimirState.sig_EndJordanSpinor
-def sig_ThreeSpinor           : RepSignature                   := bundleAndCasimirState.sig_ThreeSpinor
-def sig_VecSpinorUnip         : RepSignature                   := bundleAndCasimirState.sig_VecSpinorUnip
-def sig_BulkTensor4D          : RepSignature                   := bundleAndCasimirState.sig_BulkTensor4D
-def bundleCatalog             : List TypedInvariant            := bundleAndCasimirState.bundleCatalog
+def bundleAndCasimirState    : BundleCatalogAndCasimirsOutput := proof_BundleCatalogAndCasimirs.survivor
+def dim_End_LinkBundle       : Nat                            := bundleAndCasimirState.dim_End_LinkBundle
+def dim_Orbifold4D           : Nat                            := bundleAndCasimirState.dim_Orbifold4D
+def dim_HorizonBundle        : Nat                            := bundleAndCasimirState.dim_HorizonBundle
+def dim_TorusBundle          : Nat                            := bundleAndCasimirState.dim_TorusBundle
+def dim_End_JordanSpinor     : Nat                            := bundleAndCasimirState.dim_End_JordanSpinor
+def dim_ThreeSpinorBundle    : Nat                            := bundleAndCasimirState.dim_ThreeSpinorBundle
+def threeSpinorChiralVol     : Rat                            := bundleAndCasimirState.threeSpinorChiralVol
+def dim_VectorSpinorBundle   : Nat                            := bundleAndCasimirState.dim_VectorSpinorBundle
+def weylCasimirB2            : Rat                            := bundleAndCasimirState.weylCasimirB2
+def tr_WeylCasimir_VecSpinor : Rat                            := bundleAndCasimirState.tr_WeylCasimir_VecSpinor
+def dim_HorizonTensor4       : Nat                            := bundleAndCasimirState.dim_HorizonTensor4
+def tr_Casimir_HorizonTens4  : Rat                            := bundleAndCasimirState.tr_Casimir_HorizonTens4
+def sig_EndLink              : RepSignature                   := bundleAndCasimirState.sig_EndLink
+def sig_Orbifold4D           : RepSignature                   := bundleAndCasimirState.sig_Orbifold4D
+def sig_Horizon4D            : RepSignature                   := bundleAndCasimirState.sig_Horizon4D
+def sig_Torus2D              : RepSignature                   := bundleAndCasimirState.sig_Torus2D
+def sig_EndJordanSpinor      : RepSignature                   := bundleAndCasimirState.sig_EndJordanSpinor
+def sig_ThreeSpinor          : RepSignature                   := bundleAndCasimirState.sig_ThreeSpinor
+def sig_VecSpinorUnip        : RepSignature                   := bundleAndCasimirState.sig_VecSpinorUnip
+def sig_BulkTensor4D         : RepSignature                   := bundleAndCasimirState.sig_BulkTensor4D
+def bundleCatalog            : List TypedInvariant            := bundleAndCasimirState.bundleCatalog
 
 /-- Deterministic Signature-Locked Contraction Functor:
     Finds the unique bundle in `bundleCatalog` whose `RepSignature` matches `num.sig`. -/
@@ -709,26 +710,26 @@ def contractBySignature (num : TypedInvariant) : Rat :=
   | _   => NullCapacityRat
 
 -- ============================================================================
--- STAGE 5: Proof-to-Variable Cascade of the 4 Readout Ledgers & 23 Observables
---          (With Pure Additive Signed Spatial Trace & Curvature-Sign Lock)
+-- STAGE 5: Proof-to-Variable Cascade of the 4 Pure Mathematical Readout Ledgers
+--          (Holonomy, Instanton, Boundary, & the 23 Canonical Spectral Invariants)
 -- ============================================================================
 
 structure EmergentHolonomyReadout where
-  eta_APS       : Rat
-  mu_1          : Rat
-  mu_2          : Rat
-  mu_3          : Rat
-  aspectTangent : Rat
-  bareCasimir   : Rat
-  closedCasimir : Rat
-  apsCasimir    : Rat
-  m_1           : Rat
-  m_2           : Rat
-  m_3           : Rat
-  wolfenstein_A : Rat
+  eta_APS           : Rat
+  mu_1              : Rat
+  mu_2              : Rat
+  mu_3              : Rat
+  aspectTangent     : Rat
+  bareCasimir       : Rat
+  closedCasimir     : Rat
+  apsCasimir        : Rat
+  m_1               : Rat
+  m_2               : Rat
+  m_3               : Rat
+  holonomyQuadRatio : Rat
   deriving Repr, DecidableEq
 
-/-- Convergent Specification of `EmergentHolonomyReadout` (Seals Audit #3 & #5):
+/-- Convergent Specification of `EmergentHolonomyReadout`:
     1. Pure Additive Signed Spatial Trace Lock:
        - `mu_3` is the pure `+` sum of `eta_APS / T^2` and `contractBySignature ⟨sig_EndLink, lorentzianSpatialTrace⟩`
          (where `lorentzianSpatialTrace = -5` from `Q` on `Q^5`),
@@ -749,7 +750,7 @@ abbrev HolonomyReadoutSpec (H : EmergentHolonomyReadout) : Prop :=
   H.m_1 = (-(k_star : Rat) / Q_cayley_total) / ((T : Rat) * tr_L_total_sq) ∧
   H.m_2 = (dim_der_V5 : Rat) / ((T : Rat) ^ n_star) ∧
   H.m_3 = (dim_W8 : Rat) / ((T : Rat) ^ (n_star + r1)) ∧
-  H.wolfenstein_A = H.m_2 / (H.m_1 * H.m_1) ∧
+  H.holonomyQuadRatio = H.m_2 / (H.m_1 * H.m_1) ∧
   oddExpS4Trace H.m_1 = sin3 H.m_1 ∧
   oddExpS4Trace H.m_2 = sin3 H.m_2 ∧
   oddExpS4Trace H.m_3 = sin3 H.m_3 ∧
@@ -772,8 +773,8 @@ def proof_HolonomyReadout : VerifiedEmergence HolonomyReadoutSpec where
     let m1 := (-(k_star : Rat) / Q_cayley_total) / ((T : Rat) * tr_L_total_sq)
     let m2 := (dim_der_V5 : Rat) / ((T : Rat) ^ n_star)
     let m3 := (dim_W8 : Rat) / ((T : Rat) ^ (n_star + r1))
-    let wolfA := m2 / (m1 * m1)
-    ⟨eta, mu1, mu2, mu3, asp, bareC, closedC, apsC, m1, m2, m3, wolfA⟩
+    let hQuad := m2 / (m1 * m1)
+    ⟨eta, mu1, mu2, mu3, asp, bareC, closedC, apsC, m1, m2, m3, hQuad⟩
   certified := by decide +kernel
 
 /-- Output Variable 5.1: Stored holonomy readout (`emergentH`). -/
@@ -796,8 +797,8 @@ abbrev InstantonReadoutSpec (I : EmergentInstantonReadout) : Prop :=
   decide (I.lambda_2 < I.lambda_3) = true ∧
   I.totalTrace = I.lambda_1 + I.lambda_2 + I.lambda_3 ∧
   I.spectralAsymmetry = I.lambda_3 - I.lambda_2 - I.lambda_1 ∧
-  I.spectralAsymmetry = (((traceQuanta + r1) ^ r2 : Nat) : Rat) / ((r1 * (T ^ d_spacetime) : Nat) : Rat) ∧
-  I.transgressionPrefac = (dim_SpacetimeTensor4 : Rat) * (tubeNormSq_total ^ r1)
+  I.spectralAsymmetry = (((traceQuanta + r1) ^ r2 : Nat) : Rat) / ((r1 * (T ^ d_horizon) : Nat) : Rat) ∧
+  I.transgressionPrefac = (dim_HorizonTensor4 : Rat) * (tubeNormSq_total ^ r1)
 
 /-- Proof 5.2: Certification of `EmergentInstantonReadout` from `emergentH`. -/
 def proof_InstantonReadout : VerifiedEmergence InstantonReadoutSpec where
@@ -807,7 +808,7 @@ def proof_InstantonReadout : VerifiedEmergence InstantonReadoutSpec where
     let l3 := B_g_str_short - Q_short_val
     let tot := l1 + l2 + l3
     let asym := l3 - l2 - l1
-    let prefac := (dim_SpacetimeTensor4 : Rat) * (tubeNormSq_total ^ r1)
+    let prefac := (dim_HorizonTensor4 : Rat) * (tubeNormSq_total ^ r1)
     ⟨l1, l2, l3, tot, asym, prefac⟩
   certified := by decide +kernel
 
@@ -871,100 +872,102 @@ def proof_BoundaryReadout : VerifiedEmergence BoundaryReadoutSpec where
 /-- Output Variable 5.3: Stored boundary readout (`emergentB`). -/
 def emergentB : EmergentBoundaryReadout := proof_BoundaryReadout.survivor
 
-structure EmergentObservables where
-  n_s_bare        : Rat
-  n_s_dressed     : Rat
-  N_efolds        : Rat
-  r_tensor        : Rat
-  Y_p_orbifold    : Rat
-  Y_p_BBN         : Rat
-  Y_p_twist       : Rat
-  N_eff           : Rat
-  sin2_theta12    : Rat
-  sin2_theta23    : Rat
-  sin2_theta13    : Rat
-  Omega_m         : Rat
-  Omega_Lambda    : Rat
-  V_us            : Rat
-  V_cb            : Rat
-  V_ub            : Rat
-  V_ub_over_V_cb  : Rat
-  wolfenstein_A   : Rat
-  sin2_thetaW     : Rat
-  alpha_s_bare    : Rat
-  alpha_s_dressed : Rat
-  mu_proton       : Rat
-  mp_over_me      : Rat
+/-- Pure Mathematical Readout Structure of the 23 Canonical Spectral, Holonomy,
+    Casimir, and 3-Grade TKK Invariants of D_5. -/
+structure EmergentSpectralInvariants where
+  spectralIndex_bare            : Rat
+  spectralIndex_dressed         : Rat
+  dualLagrangeCapacity          : Rat
+  torsionLagrangeSquare         : Rat
+  orbifoldQuarterInvariant      : Rat
+  spinorOrbifoldQuarterInvariant : Rat
+  torsionShiftedQuarterNorm     : Rat
+  torsionHolonomyTrace          : Rat
+  modulus_mu1                   : Rat
+  modulus_mu2                   : Rat
+  modulus_mu3                   : Rat
+  aspectTangentModulus          : Rat
+  aspectComplementModulus       : Rat
+  oddSpinorHolonomy_1           : Rat
+  oddSpinorHolonomy_2           : Rat
+  oddSpinorHolonomy_3           : Rat
+  oddSpinorHolonomyRatio_32     : Rat
+  oddSpinorQuadraticInvariant   : Rat
+  apsInterpolatedCasimir        : Rat
+  reciprocalWeylCasimir_bare    : Rat
+  reciprocalWeylCasimir_dressed : Rat
+  dressedTorusBarrierTrace      : Rat
+  threeGradeTKKTotalTrace       : Rat
   deriving Repr, DecidableEq
 
-abbrev ObservablesReadoutSpec (O : EmergentObservables) : Prop :=
-  O.n_s_bare = (k_star : Rat) - emergentB.D_Lag ∧
-  O.n_s_dressed = O.n_s_bare + emergentB.delta_boundary ∧
-  O.N_efolds = (r1 : Rat) / emergentB.D_Lag ∧
-  O.r_tensor = (T : Rat) * (emergentB.D_Lag ^ r1) ∧
-  O.Omega_m + O.Omega_Lambda = (k_star : Rat) ∧
-  O.V_us = oddExpS4Trace emergentH.m_1 ∧
-  O.V_cb = oddExpS4Trace emergentH.m_2 ∧
-  O.V_ub = oddExpS4Trace emergentH.m_3 ∧
-  O.V_us = sin3 emergentH.m_1 ∧
-  O.V_cb = sin3 emergentH.m_2 ∧
-  O.V_ub = sin3 emergentH.m_3 ∧
-  O.V_ub_over_V_cb = O.V_ub / O.V_cb ∧
-  O.wolfenstein_A = O.V_cb / (O.V_us * O.V_us) ∧
-  O.sin2_thetaW = emergentH.apsCasimir ∧
-  O.alpha_s_bare = (k_star : Rat) / weylCasimirB2 ∧
-  O.alpha_s_dressed = (k_star : Rat) / (weylCasimirB2 - emergentH.mu_3) ∧
-  O.mu_proton = emergentB.B_torus + emergentB.D_Lag + emergentB.delta_boundary ∧
-  O.mp_over_me = M_minus1_core + (tr_M_par / (r1 : Rat)) +
+abbrev SpectralInvariantsReadoutSpec (S : EmergentSpectralInvariants) : Prop :=
+  S.spectralIndex_bare = (k_star : Rat) - emergentB.D_Lag ∧
+  S.spectralIndex_dressed = S.spectralIndex_bare + emergentB.delta_boundary ∧
+  S.dualLagrangeCapacity = (r1 : Rat) / emergentB.D_Lag ∧
+  S.torsionLagrangeSquare = (T : Rat) * (emergentB.D_Lag ^ r1) ∧
+  S.aspectTangentModulus + S.aspectComplementModulus = (k_star : Rat) ∧
+  S.oddSpinorHolonomy_1 = oddExpS4Trace emergentH.m_1 ∧
+  S.oddSpinorHolonomy_2 = oddExpS4Trace emergentH.m_2 ∧
+  S.oddSpinorHolonomy_3 = oddExpS4Trace emergentH.m_3 ∧
+  S.oddSpinorHolonomy_1 = sin3 emergentH.m_1 ∧
+  S.oddSpinorHolonomy_2 = sin3 emergentH.m_2 ∧
+  S.oddSpinorHolonomy_3 = sin3 emergentH.m_3 ∧
+  S.oddSpinorHolonomyRatio_32 = S.oddSpinorHolonomy_3 / S.oddSpinorHolonomy_2 ∧
+  S.oddSpinorQuadraticInvariant = S.oddSpinorHolonomy_2 / (S.oddSpinorHolonomy_1 * S.oddSpinorHolonomy_1) ∧
+  S.apsInterpolatedCasimir = emergentH.apsCasimir ∧
+  S.reciprocalWeylCasimir_bare = (k_star : Rat) / weylCasimirB2 ∧
+  S.reciprocalWeylCasimir_dressed = (k_star : Rat) / (weylCasimirB2 - emergentH.mu_3) ∧
+  S.dressedTorusBarrierTrace = emergentB.B_torus + emergentB.D_Lag + emergentB.delta_boundary ∧
+  S.threeGradeTKKTotalTrace = M_minus1_core + (tr_M_par / (r1 : Rat)) +
     contractBySignature ⟨sig_BulkTensor4D, c0_scalar * tkk_ratio_cross⟩
 
-/-- Proof 5.4: Certification of the 23 synthesized observables from `emergentH` and `emergentB`. -/
-def proof_ObservablesReadout : VerifiedEmergence ObservablesReadoutSpec where
+/-- Proof 5.4: Certification of the 23 canonical spectral invariants from `emergentH` and `emergentB`. -/
+def proof_SpectralInvariantsReadout : VerifiedEmergence SpectralInvariantsReadoutSpec where
   survivor :=
     let ns0     := (k_star : Rat) - emergentB.D_Lag
     let nsFull  := ns0 + emergentB.delta_boundary
-    let muProt  := emergentB.B_torus + emergentB.D_Lag + emergentB.delta_boundary
-    let ne      := (r1 : Rat) / emergentB.D_Lag
-    let rTens   := (T : Rat) * (emergentB.D_Lag ^ r1)
+    let torTr   := emergentB.B_torus + emergentB.D_Lag + emergentB.delta_boundary
+    let dlCap   := (r1 : Rat) / emergentB.D_Lag
+    let tLagSq  := (T : Rat) * (emergentB.D_Lag ^ r1)
     let orbUnit := contractBySignature ⟨sig_Orbifold4D, (p_star : Rat)⟩
-    let yp0     := ((k_star : Rat) / (d_spacetime : Rat)) - orbUnit
-    let ypBBN   := yp0 + orbUnit / (N_S : Rat)
-    let ypTwist := c_vec_normSq - emergentH.m_3
-    let neff    := (T : Rat) + emergentH.m_2 + emergentH.m_3
-    let v_us    := oddExpS4Trace emergentH.m_1
-    let v_cb    := oddExpS4Trace emergentH.m_2
-    let v_ub    := oddExpS4Trace emergentH.m_3
-    let v_ratio := v_ub / v_cb
-    let wolf_A  := v_cb / (v_us * v_us)
-    let asBare  := (k_star : Rat) / weylCasimirB2
-    let asDress := (k_star : Rat) / (weylCasimirB2 - emergentH.mu_3)
+    let qOrb0   := ((k_star : Rat) / (d_horizon : Rat)) - orbUnit
+    let qOrbSp  := qOrb0 + orbUnit / (N_S : Rat)
+    let qTwist  := c_vec_normSq - emergentH.m_3
+    let tHolTr  := (T : Rat) + emergentH.m_2 + emergentH.m_3
+    let sHol1   := oddExpS4Trace emergentH.m_1
+    let sHol2   := oddExpS4Trace emergentH.m_2
+    let sHol3   := oddExpS4Trace emergentH.m_3
+    let sRatio  := sHol3 / sHol2
+    let sQuad   := sHol2 / (sHol1 * sHol1)
+    let wBare   := (k_star : Rat) / weylCasimirB2
+    let wDress  := (k_star : Rat) / (weylCasimirB2 - emergentH.mu_3)
     let M_minus1 := M_minus1_core
     let M_zero   := tr_M_par / (r1 : Rat)
     let M_plus1  := contractBySignature ⟨sig_BulkTensor4D, c0_scalar * tkk_ratio_cross⟩
-    let mpTotal  := M_minus1 + M_zero + M_plus1
-    ⟨ns0, nsFull, ne, rTens, yp0, ypBBN, ypTwist, neff,
+    let tkkTot   := M_minus1 + M_zero + M_plus1
+    ⟨ns0, nsFull, dlCap, tLagSq, qOrb0, qOrbSp, qTwist, tHolTr,
      emergentH.mu_1, emergentH.mu_2, emergentH.mu_3,
      emergentH.aspectTangent, (k_star : Rat) - emergentH.aspectTangent,
-     v_us, v_cb, v_ub, v_ratio, wolf_A, emergentH.apsCasimir,
-     asBare, asDress, muProt, mpTotal⟩
+     sHol1, sHol2, sHol3, sRatio, sQuad, emergentH.apsCasimir,
+     wBare, wDress, torTr, tkkTot⟩
   certified := by decide +kernel
 
-/-- Output Variable 5.4: Stored 23-observable readout (`emergentO`). -/
-def emergentO : EmergentObservables := proof_ObservablesReadout.survivor
+/-- Output Variable 5.4: Stored 23-invariant mathematical readout (`emergentS`). -/
+def emergentS : EmergentSpectralInvariants := proof_SpectralInvariantsReadout.survivor
 
 -- ============================================================================
 -- STAGE 6: Master Module 3 Complete Readout Structure & End-to-End Verification
 -- ============================================================================
 
 structure GnosisConformalAndBundlesReadout where
-  holonomy    : EmergentHolonomyReadout  := emergentH
-  instanton   : EmergentInstantonReadout := emergentI
-  boundary    : EmergentBoundaryReadout  := emergentB
-  observables : EmergentObservables      := emergentO
+  holonomy   : EmergentHolonomyReadout    := emergentH
+  instanton  : EmergentInstantonReadout   := emergentI
+  boundary   : EmergentBoundaryReadout    := emergentB
+  invariants : EmergentSpectralInvariants := emergentS
   deriving Repr, DecidableEq
 
-/-- Proof 6.1: Final verified readout object of Module 3. -/
-def proof_completeLogosReadout :
+/-- Proof 6.1: Final verified pure-mathematical readout object of Module 3. -/
+def proof_completeGnosisReadout :
     VerifiedEmergence (fun R : GnosisConformalAndBundlesReadout =>
       allBasisPairsMinPolyZero = true ∧
       allBasisTriplesConformalCubeZero = true ∧
@@ -975,13 +978,13 @@ def proof_completeLogosReadout :
       subQuad kvMu2Poly specMu2Poly = poly_mu2_lock ∧
       R.holonomy.eta_APS = (overlapQuanta : Rat) * F_min ∧
       R.boundary.traceBridge = chiralDerivationSum ∧
-      R.observables.Omega_m + R.observables.Omega_Lambda = (k_star : Rat) ∧
-      decide (R.observables.mp_over_me > M_minus1_core) = true) where
+      R.invariants.aspectTangentModulus + R.invariants.aspectComplementModulus = (k_star : Rat) ∧
+      decide (R.invariants.threeGradeTKKTotalTrace > M_minus1_core) = true) where
   survivor := {}
   certified := by decide +kernel
 
 /-- Output Variable 6.1: Master complete readout of Module 3. -/
-def completeLogosReadout : GnosisConformalAndBundlesReadout := proof_completeLogosReadout.survivor
+def completeGnosisReadout : GnosisConformalAndBundlesReadout := proof_completeGnosisReadout.survivor
 
 def ratLe (a b : Rat) : Bool :=
   decide (a.num * Int.ofNat b.den ≤ b.num * Int.ofNat a.den)
@@ -989,6 +992,6 @@ def ratLe (a b : Rat) : Bool :=
 def inBounds (x lo hi : Rat) : Bool :=
   ratLe lo x && ratLe x hi
 
-#eval completeLogosReadout
+#eval completeGnosisReadout
 
 end GeometricNullOntologicalSpectralInvariantSymmetry.GnosisConformalAndBundles
