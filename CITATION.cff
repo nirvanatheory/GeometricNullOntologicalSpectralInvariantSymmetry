@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you reference this formalization in academic work, please cite it using the metadata below."
+type: software
+title: "Geometric Null Ontological Spectral Invariant Symmetry"
+abstract: >-
+  A self-contained, machine-verified formalization in Lean 4 (v4.28.0)
+  establishing the constructive emergence and spectral rigidity of the
+  rank-2 Euclidean Jordan spin factor V_5, the Cartan Type IV bounded
+  symmetric domain D_5, and the 8-dimensional Tits-Kantor-Koecher (TKK)
+  conformal representation W_8 from a single algebraic zero (0) with
+  zero axioms, zero sorrys, zero external dependencies, and zero free
+  parameters. Modules 1-3 enforce a sterile Mathematical Firewall
+  synthesizing 23 pure spectral invariants, which Module 4 maps 1-to-1
+  to physical observables and verifies in the Lean kernel across 23
+  measured 1-sigma empirical intervals (> 197 bits of joint Shannon
+  information).
+authors:
+  - family-names: "Rivera"
+    given-names: "Anthony Curtis"
+version: "1.0.0"
+date-released: "2026-10-16"
+license: MIT
+repository-code: "https://github.com/nirvanatheory/GeometricNullOntologicalSpectralInvariantSymmetry"
+keywords:
+  - "Lean 4"
+  - "formal verification"
+  - "Euclidean Jordan algebra"
+  - "Cartan Type IV symmetric domain"
+  - "Tits-Kantor-Koecher Lie algebra"
+  - "Koszul-Vinberg metric"
+  - "Bergman operator"
+  - "spectral invariants"
+  - "topological frustration"
+  - "Agrippa's trilemma"
