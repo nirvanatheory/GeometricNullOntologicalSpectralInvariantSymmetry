@@ -202,7 +202,7 @@ def row (name : String) (val lo hi : Rat) (bounds : String) : IO Unit := do
   let status := if inBounds val lo hi then "IN BOUNDS (VERIFIED)" else "OUT OF BOUNDS"
   IO.println s!"  {name} | {fmtRat val} | {bounds} | {status}"
 
-def main : IO Unit := do
+def runGnosisAudit : IO Unit := do
   let O := emergentO
   let C := crossObservableBottleneck
   let I := empiricalInformationAudit
@@ -242,5 +242,5 @@ def main : IO Unit := do
 
 end GeometricNullOntologicalSpectralInvariantSymmetry.GnosisEmpiricalAndInformationAudit
 
-open GeometricNullOntologicalSpectralInvariantSymmetry.GnosisEmpiricalAndInformationAudit in
-#eval main
+def main : IO Unit :=
+  GeometricNullOntologicalSpectralInvariantSymmetry.GnosisEmpiricalAndInformationAudit.runGnosisAudit
